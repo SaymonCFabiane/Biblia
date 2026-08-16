@@ -6,7 +6,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../models/bible_models.dart';
+import '../../../models/bible_models.dart';
 
 /// Versão do banco embutido nos assets. Se você atualizar o arquivo
 /// assets/db/biblia.db, incremente este número para forçar a recópia

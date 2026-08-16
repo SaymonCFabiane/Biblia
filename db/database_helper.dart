@@ -158,6 +158,13 @@ class DatabaseHelper {
   /// Escolhe o capítulo do dia de forma determinística: todo mundo que abrir
   /// o app no mesmo dia vê a mesma leitura, e o plano avança um capítulo por
   /// dia, percorrendo a bíblia inteira em ordem e recomeçando ao terminar.
+  ///
+  /// Isto NÃO é o Lecionário oficial da Igreja (a leitura específica do dia,
+  /// com ciclo A/B/C aos domingos e I/II nos dias de semana) — essa tabela
+  /// não está no banco local e não dá pra deduzir a partir dos versículos.
+  /// Por isso a tela chama isto de "leitura sugerida". Veja
+  /// lib/liturgical/lectionary_provider.dart para o porquê e para o ponto de
+  /// extensão preparado pra plugar uma fonte real do Lecionário no futuro.
   Future<ChapterRef?> getTodayReading() async {
     final chapters = await getAllAvailableChapters();
     if (chapters.isEmpty) return null;

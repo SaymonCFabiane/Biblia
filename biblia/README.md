@@ -55,6 +55,32 @@ build/app/outputs/flutter-apk/app-release.apk
 - Envie esse `.apk` pro celular dele (WhatsApp, e-mail, cabo USB, etc.)
 - No celular, ele vai precisar permitir "instalar de fontes desconhecidas" na primeira vez (o Android pede isso automaticamente ao tentar abrir o arquivo).
 
+## Sobre a "leitura do dia" e o calendário litúrgico
+
+A tela "Hoje" agora mostra o tempo litúrgico do dia (ex.: "Domingo de Ramos",
+"Segunda-feira da 3ª Semana do Tempo Comum"), com a cor litúrgica como uma
+faixa fina no topo. Isso é calculado inteiramente por matemática de data em
+`lib/liturgical/liturgical_calendar.dart` (Páscoa pelo algoritmo de
+Meeus/Jones/Butcher, e todo o resto — Cinzas, Ramos, Tríduo, Ascensão,
+Pentecostes, Corpus Christi, Cristo Rei, Advento, ciclos A/B/C e I/II —
+derivado dela). Não depende de internet nem de nenhuma fonte externa.
+
+**O capítulo sugerido é outra história.** O app **não tem** o Lecionário
+oficial da Igreja (a tabela com a leitura bíblica específica de cada dia,
+definida pela CNBB/Vaticano — centenas de referências, incluindo o ciclo
+dominical A/B/C e o ciclo ferial I/II) — isso não é algo que dá pra calcular
+ou aproximar a partir do calendário litúrgico ou dos versículos do banco. Por
+isso o capítulo continua vindo de uma rotação sequencial simples
+(`DatabaseHelper.getTodayReading`, `epochDay % total_de_capítulos`), e a tela
+deixa isso explícito com o texto "Leitura sugerida" — não é a leitura
+oficial do dia.
+
+Se um dia você conseguir uma fonte de dados real do Lecionário (ex.: um JSON
+`"AAAA-MM-DD" -> referências`), há um ponto de extensão pronto em
+`lib/liturgical/lectionary_provider.dart`: implemente a interface
+`LectionaryProvider` com essa fonte e plugue no lugar da rotação sequencial,
+sem precisar reescrever a tela.
+
 ## Sobre o conteúdo do banco
 
 Convertidos os 3 dumps que você me passou: **33.276 versículos**, 73 livros, 2 testamentos. Uma ressalva importante sobre os **dados de origem** (não é algo que eu quebrei na conversão — conferi bit a bit):
@@ -70,6 +96,9 @@ lib/
   models/bible_models.dart     # Testament, Book, Verse, ChapterRef
   db/database_helper.dart      # abre o SQLite, todas as queries
   providers/settings_provider.dart  # tema + fonte, salvos no aparelho
+  liturgical/
+    liturgical_calendar.dart   # cálculo do calendário litúrgico (tempo, semana, cor, ciclo A/B/C e I/II)
+    lectionary_provider.dart   # ponto de extensão pro Lecionário oficial (ainda não implementado)
   screens/
     home_shell.dart            # navegação inferior: Hoje / Bíblia / Buscar
     daily_reading_screen.dart  # leitura do dia

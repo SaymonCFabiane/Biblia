@@ -11,10 +11,10 @@
 /// usa uma rotação sequencial de capítulos (`DatabaseHelper.getTodayReading`)
 /// como "leitura sugerida" — não a leitura oficial do dia.
 ///
-/// Se no futuro você conseguir uma fonte confiável (ex.: um JSON
-/// `"AAAA-MM-DD" -> referências`, exportado do Lecionário oficial),
-/// implemente [LectionaryProvider] com essa fonte e passe a instância pra
-/// tela no lugar de [NullLectionaryProvider], sem precisar reescrever a UI.
+/// Para integrar uma fonte confiável (ex.: um JSON
+/// `"AAAA-MM-DD" -> referências` exportado do Lecionário oficial), basta
+/// implementar [LectionaryProvider] e injetar a instância na tela no lugar
+/// de [NullLectionaryProvider], sem alterar a UI.
 library;
 
 /// Uma leitura litúrgica oficial (Lecionário) para um dia específico.

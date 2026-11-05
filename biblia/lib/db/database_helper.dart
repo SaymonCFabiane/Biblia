@@ -8,9 +8,9 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../../models/bible_models.dart';
 
-/// Versão do banco embutido nos assets. Se você atualizar o arquivo
-/// assets/db/biblia.db, incremente este número para forçar a recópia
-/// no dispositivo do usuário (senão ele continua usando a cópia antiga).
+/// Versão do banco embutido nos assets. Ao atualizar assets/db/biblia.db,
+/// incremente este número para forçar a recópia no dispositivo (o nome do
+/// arquivo local inclui a versão, então a cópia antiga deixa de ser usada).
 const int kEmbeddedDbVersion = 1;
 
 class DatabaseHelper {
@@ -162,9 +162,9 @@ class DatabaseHelper {
   /// Isto NÃO é o Lecionário oficial da Igreja (a leitura específica do dia,
   /// com ciclo A/B/C aos domingos e I/II nos dias de semana) — essa tabela
   /// não está no banco local e não dá pra deduzir a partir dos versículos.
-  /// Por isso a tela chama isto de "leitura sugerida". Veja
-  /// lib/liturgical/lectionary_provider.dart para o porquê e para o ponto de
-  /// extensão preparado pra plugar uma fonte real do Lecionário no futuro.
+  /// Por isso a tela chama isto de "leitura sugerida". O ponto de extensão
+  /// para uma fonte real do Lecionário está em
+  /// lib/liturgical/lectionary_provider.dart.
   Future<ChapterRef?> getTodayReading() async {
     final chapters = await getAllAvailableChapters();
     if (chapters.isEmpty) return null;

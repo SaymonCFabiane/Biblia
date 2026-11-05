@@ -24,15 +24,21 @@ sem conexão.
 Ele usa no dia a dia, o que fez dele meu primeiro "cliente real": cada decisão
 de interface foi validada vendo uma pessoa de verdade usar.
 
-<!--
-  📸 Adicione aqui 3–4 capturas de tela (Hoje · Leitura · Busca · Configurações).
-  Ex.: crie a pasta docs/screenshots/ e use:
-  <p align="center">
-    <img src="docs/screenshots/hoje.png" width="200">
-    <img src="docs/screenshots/leitura.png" width="200">
-    <img src="docs/screenshots/busca.png" width="200">
-  </p>
--->
+<p align="center">
+  <img src="docs/screenshots/hoje.jpg" width="200" alt="Leitura do dia">
+  <img src="docs/screenshots/leitura.jpg" width="200" alt="Leitura de um capítulo">
+  <img src="docs/screenshots/busca.jpg" width="200" alt="Busca por trecho">
+</p>
+<p align="center">
+  <img src="docs/screenshots/biblia.jpg" width="200" alt="Testamentos">
+  <img src="docs/screenshots/livros.jpg" width="200" alt="Lista de livros">
+  <img src="docs/screenshots/hoje-escuro.jpg" width="200" alt="Modo escuro">
+  <img src="docs/screenshots/configuracoes.jpg" width="200" alt="Configurações de tema e fonte">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SaymonCFabiane/Biblia/releases/latest/download/biblia.apk"><b>⬇️ Baixar APK (Android)</b></a>
+</p>
 
 ## Funcionalidades
 
@@ -109,7 +115,12 @@ biblia/lib/
 Configurações do usuário ficam num `ChangeNotifier` que persiste em
 `shared_preferences` e reconstrói o tema ao mudar.
 
-## Como rodar
+## Instalar no celular
+
+1. Baixe o [APK mais recente](https://github.com/SaymonCFabiane/Biblia/releases/latest/download/biblia.apk) (ou veja todas as versões em [Releases](https://github.com/SaymonCFabiane/Biblia/releases)).
+2. Abra o arquivo no Android e permita "instalar de fontes desconhecidas" quando o sistema pedir.
+
+## Como rodar a partir do código
 
 Pré-requisitos: [Flutter SDK](https://docs.flutter.dev/get-started/install) e Android SDK (`flutter doctor` sem erros).
 
